@@ -138,7 +138,9 @@ Elabore um programa em Python que:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+ Nota adicional[^1].
 
+Foot note[^2].
 
 [^1]: A questão 4 está com bastante errinhos em comparação as outras, mas ainda cumpre os requisitos básicos do exercício.
 [^2]: Foi um trabalho da faculdade que já está corrigido, vou deixar aqui do jeito que enviei, fiquei com a nota final de 83.
