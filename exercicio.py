@@ -1,6 +1,6 @@
 # Mensagem de boas vindas  
 print('-------------------------------------------------------------------')
-print('Seja bem-vindo(a) à loja Jordane Padilha 4665714!')
+print('Seja bem-vindo(a) à loja Jordane Padilha xxxxxxxx!')
 print('-------------------------------------------------------------------')
 
 # Input do valor unitário e quantidade do produto
