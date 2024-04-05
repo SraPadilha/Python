@@ -48,7 +48,7 @@ id_global = 0
 
 # Estrutura de menu principal
 while True:
-    print("Bem-vindo ao sistema de gerenciamento de livros!")
+    print("Bem-vindo ao sistema de gerenciamento de livros! Jordane Padilha xxxxxxx")
     opcao = int(input("Escolha uma opção:\n1. Cadastrar Livro\n2. Consultar Livro\n3. Remover Livro\n4. Encerrar Programa\n"))
     
     if opcao == 1:
