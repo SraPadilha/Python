@@ -1,82 +1,65 @@
-# Implementação das funções
-def cadastrar_livro():
-    nome = input("Digite o nome do livro: ")
-    autor = input("Digite o nome do autor: ")
-    editora = input("Digite o nome da editora: ")
-    global id_global
-    id_global += 1
-    livro = {'id': id_global, 'nome': nome, 'autor': autor, 'editora': editora}
-    lista_livro.append(livro)
+# Mensagem de boas vindas  
+print('-------------------------------------------------------------------')
+print('Seja bem-vindo(a) à loja Jordane Padilha xxxxxxxxxxxxx!')
+print('-------------------------------------------------------------------')
 
-def consultar_todos():
-    if lista_livro:
-        for livro in lista_livro:
-            print(livro)
-    else:
-        print("Não há livros cadastrados.")
+# Serviço
+def escolha_servico():
+    while True:
+        servico = input("Digite o serviço desejado (DIG para Digitalização, ICO para Impressão Colorida, IBO para Impressão Preto e Branco, FOT para Fotocópia): ").upper()
+        if servico in ['DIG', 'ICO', 'IBO', 'FOT']:
+            if servico == 'DIG':
+                return 1.10
+            elif servico == 'ICO':
+                return 1.00
+            elif servico == 'IBO':
+                return 0.40
+            elif servico == 'FOT':
+                return 0.20
+        else:
+            print("Opção de serviço inválida. Por favor, tente novamente.")
 
-def consultar_por_id():
-    id_consulta = int(input("Digite o ID do livro que deseja consultar: "))
-    for livro in lista_livro:
-        if livro['id'] == id_consulta:
-            print(livro)
-            return
-    print("Livro não encontrado.")
+# Num paginas e desconto
+def num_paginas():
+    while True:
+        try:
+            num_paginas = int(input("Digite o número de páginas: "))
+            if num_paginas < 20:
+                return num_paginas
+            elif num_paginas >= 20 and num_paginas < 200:
+                return num_paginas * 0.85
+            elif num_paginas >= 200 and num_paginas < 2000:
+                return num_paginas * 0.80
+            elif num_paginas >= 2000 and num_paginas < 20000:
+                return num_paginas * 0.75
+            else:
+                print("Não aceitamos pedidos com mais de 20.000 páginas.")
+        except ValueError:
+            print("Por favor, digite um valor numérico válido.")
 
-def consultar_por_autor():
-    autor_consulta = input("Digite o nome do autor que deseja consultar: ")
-    encontrados = False
-    for livro in lista_livro:
-        if livro['autor'].lower() == autor_consulta.lower():
-            print(livro)
-            encontrados = True
-    if not encontrados:
-        print("Nenhum livro encontrado para o autor especificado.")
+# Extra (encadernação)
 
-def remover_livro():
-    id_remover = int(input("Digite o ID do livro que deseja remover: "))
-    for livro in lista_livro:
-        if livro['id'] == id_remover:
-            lista_livro.remove(livro)
-            print("Livro removido com sucesso.")
-            return
-    print("Livro não encontrado.")
+def servico_extra():
+    while True:
+        extra = input("Escolha o serviço adicional (digite 1, 2 ou 0 para continuar):\n1 para encadernação simples\n2 para encadernação de capa dura\n0 se não quiser nenhum adicional: ")
 
-# Inicialização das variáveis
-lista_livro = []
-id_global = 0
+        if extra in ['1', '2', '0']:
+            if extra == '1':
+                return 15.00
+            elif extra == '2':
+                return 40.00
+            else:
+                return 0.00
+        else:
+            print("Opção de serviço adicional inválida. Por favor, tente novamente.")
 
-# Estrutura de menu principal
-while True:
-    print("Bem-vindo ao sistema de gerenciamento de livros Jordane Padilha xxxxxxx!")
-    opcao = int(input("Escolha uma opção:\n1. Cadastrar Livro\n2. Consultar Livro\n3. Remover Livro\n4. Encerrar Programa\n"))
-    
-    if opcao == 1:
-        cadastrar_livro()
-    elif opcao == 2:
-        consulta_opcao = int(input("Escolha uma opção de consulta:\n1. Consultar Todos\n2. Consultar por Id\n3. Consultar por Autor\n4. Retornar ao menu\n"))
-        if consulta_opcao == 1:
-            consultar_todos()
-        elif consulta_opcao == 2:
-            consultar_por_id()
-        elif consulta_opcao == 3:
-            consultar_por_autor()
-        elif consulta_opcao != 4:
-            print("Opção inválida.")
-    elif opcao == 3:
-        remover_livro()
-    elif opcao == 4:
-        break
-    else:
-        print("Opção inválida.")
 
-# Saída de console conforme as exigências
-print("Bem-vindo ao sistema de gerenciamento de livros!")
-cadastrar_livro()
-cadastrar_livro()
-cadastrar_livro()
-consultar_todos()
-consultar_por_id()
-consultar_por_autor()
-remover_livro()
-consultar_todos()
+# Chamando as funções e calculando o total a pagar
+servico = escolha_servico()
+num_pags = num_paginas()
+extra = servico_extra()
+
+total = (servico * num_pags) + extra
+
+print(f"O total a pagar é: R${total:.2f}")
+
